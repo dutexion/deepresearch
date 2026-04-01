@@ -1,0 +1,17 @@
+{
+  "name": "deepresearch",
+  "owner": {
+    "name": "dutexion",
+    "url": "https://github.com/dutexion"
+  },
+  "plugins": [
+    {
+      "name": "deep-research",
+      "source": ".",
+      "description": "Structured two-phase research workflow: outline generation with web search, deep parallel investigation, markdown report generation, and Korean translation.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": ["research", "deep-research", "web-search", "academic", "report"]
+    }
+  ]
+}
