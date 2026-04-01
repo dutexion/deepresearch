@@ -10,7 +10,7 @@ A structured research workflow plugin for Claude Code, supporting two-phase rese
 
 ### What's different from the original?
 - Restructured as a proper **Claude Code plugin** (`.claude-plugin/plugin.json`)
-- No manual `cp` installation — use `--plugin-dir` or marketplace install
+- No manual `cp` installation — use `/plugin install` or `--plugin-dir`
 - Hardcoded `~/.claude/` paths replaced with `${CLAUDE_SKILL_DIR}`
 - Added `/deep-research:report-to-ko` skill for Korean translation of large reports
 - Removed Codex/OpenCode support (Claude Code only)
@@ -32,34 +32,18 @@ A structured research workflow plugin for Claude Code, supporting two-phase rese
 
 ## Installation
 
-### Option A: Development / Local Testing
+### Option A: Marketplace Plugin Install (Recommended)
 
-```bash
-git clone https://github.com/Weizhena/deep-research-skills.git
-claude --plugin-dir ./deep-research-skills
+```
+/plugin marketplace add https://github.com/dutexion/deepresearch
+/plugin install deep-research
 ```
 
-### Option B: Add as Marketplace
-
-Add to your `~/.claude/settings.json`:
-
-```json
-{
-  "extraKnownMarketplaces": {
-    "deep-research": {
-      "source": {
-        "source": "github",
-        "repo": "Weizhena/deep-research-skills"
-      }
-    }
-  }
-}
-```
-
-Then install:
+### Option B: Development / Local Testing
 
 ```bash
-claude plugin install deep-research@deep-research
+git clone https://github.com/dutexion/deepresearch.git
+claude --plugin-dir ./deepresearch
 ```
 
 ## Commands
@@ -71,6 +55,7 @@ claude plugin install deep-research@deep-research
 | `/deep-research:research-add-fields` | Add more field definitions to existing outline |
 | `/deep-research:research-deep` | Deep research each item with parallel agents |
 | `/deep-research:research-report` | Generate markdown report from JSON results |
+| `/deep-research:report-to-ko [path]` | Translate a large markdown report to Korean |
 
 ## Workflow
 
@@ -107,6 +92,14 @@ AI automatically searches the web for each item using parallel agents. Each item
 
 All data is compiled into one organized markdown report with table of contents, ready to read or share.
 
+### Phase 4: Translate Report (Optional)
+
+```
+/deep-research:report-to-ko
+```
+
+Translates the full report to Korean using parallel agents. Builds a terminology glossary first for consistency, then chunks the report and translates in batches of 5. Supports resume from partial completion.
+
 ## Output Structure
 
 ```
@@ -117,13 +110,15 @@ All data is compiled into one organized markdown report with table of contents, 
   │   ├── Item_One.json
   │   └── Item_Two.json
   ├── generate_report.py   # Auto-generated report script
-  └── report.md            # Final markdown report
+  ├── report.md            # Final markdown report
+  ├── report_ko.md         # Korean translation (optional)
+  └── glossary_ko.md       # Terminology glossary (optional)
 ```
 
 ## Plugin Structure
 
 ```
-deep-research-skills/
+deepresearch/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── skills/
@@ -131,7 +126,8 @@ deep-research-skills/
 │   ├── research-deep/       # Parallel deep investigation
 │   ├── research-add-items/  # Expand items
 │   ├── research-add-fields/ # Expand fields
-│   └── research-report/     # Report generation
+│   ├── research-report/     # Report generation
+│   └── report-to-ko/       # Korean translation with chunking
 ├── agents/
 │   └── web-search-agent.md  # Web research specialist
 ├── hooks/
