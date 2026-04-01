@@ -8,5 +8,12 @@
   },
   "repository": "https://github.com/dutexion/deepresearch",
   "license": "MIT",
-  "keywords": ["deep-research", "web-search", "academic", "outline", "report"]
+  "keywords": [
+    "deep-research",
+    "web-search",
+    "academic",
+    "outline",
+    "report",
+    "deepresearch"
+  ]
 }
