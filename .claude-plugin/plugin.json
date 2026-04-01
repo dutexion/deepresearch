@@ -1,0 +1,12 @@
+{
+  "name": "deep-research",
+  "version": "1.0.0",
+  "description": "Structured two-phase research workflow: outline generation with web search, deep parallel investigation, and markdown report generation. Supports academic, technical, market, and due diligence research.",
+  "author": {
+    "name": "Weizhena",
+    "url": "https://github.com/Weizhena"
+  },
+  "repository": "https://github.com/Weizhena/deep-research-skills",
+  "license": "MIT",
+  "keywords": ["deep-research", "web-search", "academic", "outline", "report"]
+}

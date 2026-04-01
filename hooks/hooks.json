@@ -1,0 +1,16 @@
+{
+  "description": "Deep Research plugin: dependency check on session start",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c 'import yaml' 2>/dev/null || echo '[deep-research] Warning: pyyaml not installed. Run: pip install pyyaml'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
