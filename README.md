@@ -1,3 +1,5 @@
+[한국어](README.ko.md)
+
 # Deep Research Plugin for Claude Code
 
 > Forked from [Weizhena/deep-research-skills](https://github.com/Weizhena/deep-research-skills) and restructured as a Claude Code plugin.
